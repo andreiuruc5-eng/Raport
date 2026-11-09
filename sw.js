@@ -1,5 +1,5 @@
-const C='rapoarte-v4';
-const PRE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/pdfmake.min.js','https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/vfs_fonts.js','https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.iife.js'];
+const C='rapoarte-v5';
+const PRE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./pdfmake.min.js','./vfs_fonts.js','./docx.min.js','https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/pdfmake.min.js','https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/vfs_fonts.js','https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.iife.js'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(PRE.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==C).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;
